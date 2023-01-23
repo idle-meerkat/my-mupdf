@@ -2241,7 +2241,7 @@ static void do_app(void)
 		case 'a': toggle_annotate(ANNOTATE_MODE_NORMAL); break;
 		case 'R': toggle_annotate(ANNOTATE_MODE_REDACT); break;
 		case 'o': toggle_outline(); break;
-		case 'u': toggle_undo(); break;
+		case 'U': toggle_undo(); break;
 		case 'Y': toggle_layers(); break;
 		case 'L': showlinks = !showlinks; break;
 		case 'F': showform = !showform; break;
@@ -2272,9 +2272,8 @@ static void do_app(void)
 		case 'j': case KEY_DOWN: scroll_y += canvas_h/10; break;
 		case 'h': case KEY_LEFT: scroll_x -= canvas_w/10; break;
 		case 'l': case KEY_RIGHT: scroll_x += canvas_w/10; break;
-
-		case 'b': number = fz_maxi(number, 1); while (number--) smart_move_backward(); break;
-		case ' ': number = fz_maxi(number, 1); while (number--) smart_move_forward(); break;
+		case 'u': number = fz_maxi(number, 1); while (number--) smart_move_backward(); break;
+		case 'd': number = fz_maxi(number, 1); while (number--) smart_move_forward(); break;
 		case 'g': jump_to_page(number - 1); break;
 		case 'G': jump_to_location(fz_last_page(ctx, doc)); break;
 
