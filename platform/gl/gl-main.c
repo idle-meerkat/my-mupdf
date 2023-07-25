@@ -2963,6 +2963,12 @@ static void signal_handler(int signal)
 	if (signal == SIGHUP)
 		reloadrequested = 1;
 }
+
+static void signal_quit_handler(int signal)
+{
+	if (signal == SIGQUIT)
+		glutLeaveMainLoop();
+}
 #endif
 
 #ifdef _MSC_VER
@@ -2985,6 +2991,8 @@ int main(int argc, char **argv)
 	sigaction(SIGCHLD, &arg, NULL);
 
 	signal(SIGHUP, signal_handler);
+
+	signal(SIGQUIT, signal_quit_handler);
 #endif
 
 	glutInit(&argc, argv);
